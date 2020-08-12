@@ -15,9 +15,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.getSupportActionBar().hide();
+
+        //Esto hace que se ejecute el código 3 segundos después
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                //Tras 3 segundos pasamos a la siguiente actividad
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
