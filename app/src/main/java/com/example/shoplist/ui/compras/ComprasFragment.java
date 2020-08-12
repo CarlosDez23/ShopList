@@ -1,4 +1,4 @@
-package com.example.shoplist.ui.home;
+package com.example.shoplist.ui.compras;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.shoplist.R;
 
-public class HomeFragment extends Fragment {
+public class ComprasFragment extends Fragment {
 
 
 
