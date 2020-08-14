@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,7 +67,11 @@ public class CatalogoFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.fabCatalogoAddProducto:
-                    //Transaccion al fragment para añadir un producto
+                    CatalogoAddProductoFragment fragmentAddProducto = new CatalogoAddProductoFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.nav_host_fragment, fragmentAddProducto);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                     break;
                 default:
                     break;

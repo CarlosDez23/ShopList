@@ -12,7 +12,17 @@ public class ControladorBD extends SQLiteOpenHelper {
             "CREATE TABLE PRODUCTO (" +
                     "id INTEGER," +
                     "nombre VARCHAR(255) NOT NULL, " +
-                    "imagen BLOB);";
+                    "imagen BLOB NOT NULL);";
+
+    private static final String CREATE_TABLE_COMPRAS =
+            "CREATE TABLE COMPRA (" +
+                    "id INTEGER," +
+                    "fecha VARCHAR(255) NOT NULL);";
+
+    private static final String CREATE_TABLE_LINEA_COMPRA =
+            "CREATE TABLE LINEA_COMPRA (" +
+                    "idcompra INTEGER NOT NULL," +
+                    "idproducto INTEGER NOT NULL);";
 
     public ControladorBD(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -21,8 +31,8 @@ public class ControladorBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PRODUCTO);
-
-
+        db.execSQL(CREATE_TABLE_COMPRAS);
+        db.execSQL(CREATE_TABLE_LINEA_COMPRA);
     }
 
     @Override

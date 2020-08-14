@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="verdeSplash">#00ff8f</color>
     <color name="azulSplash">#00a1ff</color>
+    <color name="blanco">#FFFFFF</color>
 </resources>

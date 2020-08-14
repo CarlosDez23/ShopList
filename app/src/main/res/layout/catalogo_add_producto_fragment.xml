@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanco"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.catalogo.CatalogoAddProductoFragment">
+    <ImageView
+        android:id="@+id/ivNuevoProducto"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nuevoproducto"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNuevoProductoCamara"
+        style="@android:style/Widget.Material.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivNuevoProducto"
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_camera"
+        app:backgroundTint= "@color/colorPrimary"
+        app:rippleColor="#FFFFFF" /><!--"#EE3C3737"-->
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
+        android:layout_below="@id/ivNuevoProducto"
+        android:background="#FFFFFF">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvNuevoProducto"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="#FFFFFF"
+            android:hint="Nombre del producto">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAddProducto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="@dimen/button_corner_radius"
+            android:layout_below="@id/tvNuevoProducto"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="5dp"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_splash"
+                >
+
+
+                <RelativeLayout
+                    android:id="@+id/btnAddProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/tvDetallePubsModoBoton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Añadir producto"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
