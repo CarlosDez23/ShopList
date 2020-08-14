@@ -10,13 +10,13 @@ public class ControladorBD extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_PRODUCTO =
             "CREATE TABLE PRODUCTO (" +
-                    "id INTEGER," +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nombre VARCHAR(255) NOT NULL, " +
                     "imagen BLOB NOT NULL);";
 
     private static final String CREATE_TABLE_COMPRAS =
             "CREATE TABLE COMPRA (" +
-                    "id INTEGER," +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "fecha VARCHAR(255) NOT NULL);";
 
     private static final String CREATE_TABLE_LINEA_COMPRA =

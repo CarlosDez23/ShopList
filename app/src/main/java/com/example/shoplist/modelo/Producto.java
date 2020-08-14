@@ -17,6 +17,11 @@ public class Producto {
         this.imagen = imagen;
     }
 
+    public Producto(String nombre, Bitmap imagen) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+    }
+
     public int getId() {
         return id;
     }
