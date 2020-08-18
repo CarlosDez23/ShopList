@@ -58,7 +58,6 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
     }
 
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivCatalogoProductosImagen;
         private TextView tvCatalogoProductosNombre;
