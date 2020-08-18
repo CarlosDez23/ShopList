@@ -15,7 +15,11 @@ public class SQLClass {
     private static final String NOMBRE_BD = "BBDD";
     private static final int VERSION_BD = 1;
 
-
+    /**
+     * Método para insertar un producto en la tabla productos
+     * @param producto
+     * @param context
+     */
     public static void insertarNuevoProductoCatalogo(Producto producto,Context context){
         ControladorBD controlador = new ControladorBD(context, NOMBRE_BD, null,VERSION_BD);
         SQLiteDatabase bd = controlador.getWritableDatabase();
@@ -27,6 +31,24 @@ public class SQLClass {
         controlador.close();
     }
 
+    /**
+     * Método para borrar un producto de la tabla productos
+     * @param idProducto
+     * @param context
+     */
+    public static void borrarProducto(int idProducto, Context context){
+        ControladorBD controladorBD = new ControladorBD(context,NOMBRE_BD,null,VERSION_BD);
+        SQLiteDatabase bd = controladorBD.getWritableDatabase();
+        bd.delete("PRODUCTO", "id="+idProducto, null);
+        bd.close();
+        controladorBD.close();
+    }
+
+    /**
+     * Método para listar todos los productos que se encuentran en la tabla
+     * @param context
+     * @return
+     */
     public static ArrayList<Producto> consultaProductosCatalogo(Context context){
         ControladorBD controladorBD = new ControladorBD(context, NOMBRE_BD, null, VERSION_BD);
         SQLiteDatabase db = controladorBD.getReadableDatabase();

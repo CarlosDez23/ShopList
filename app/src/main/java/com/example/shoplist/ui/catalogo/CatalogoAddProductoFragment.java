@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,7 +53,6 @@ public class CatalogoAddProductoFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         llamarVistas();
-
     }
 
     private void llamarVistas() {
@@ -138,7 +137,6 @@ public class CatalogoAddProductoFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == GALERIA) {
             if (data != null) {
                 Uri contentURI = data.getData();
@@ -162,6 +160,5 @@ public class CatalogoAddProductoFragment extends Fragment {
 
     private void addProducto (Producto producto){
         SQLClass.insertarNuevoProductoCatalogo(producto, getContext());
-
     }
 }

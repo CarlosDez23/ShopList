@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -32,8 +33,6 @@ public class CatalogoFragment extends Fragment {
     //Vistas
     private RecyclerView rvCatalogoProductos;
     private FloatingActionButton fabCatalogoAddProducto;
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,7 +63,7 @@ public class CatalogoFragment extends Fragment {
         if (listaProductos == null){
             listaProductos = new ArrayList<>();
         }
-        rvCatalogoProductos.setAdapter(new CatalogoAdapter(listaProductos));
+        rvCatalogoProductos.setAdapter(new CatalogoAdapter(listaProductos, getContext()));
     }
 
     private View.OnClickListener listeners = new View.OnClickListener() {
