@@ -1,8 +1,10 @@
 package com.example.shoplist.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -31,5 +33,9 @@ public class Herramienta {
         byte[] byteArray = stream.toByteArray();
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
 
+    }
+
+    public static void mostrarAvisto(String texto, Context context){
+        Toast.makeText(context,texto,Toast.LENGTH_LONG).show();
     }
 }

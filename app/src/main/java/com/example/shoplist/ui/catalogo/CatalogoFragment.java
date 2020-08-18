@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shoplist.MainActivity;
 import com.example.shoplist.R;
 import com.example.shoplist.adapters.CatalogoAdapter;
+import com.example.shoplist.bbdd.SQLClass;
 import com.example.shoplist.modelo.Producto;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,7 +27,7 @@ public class CatalogoFragment extends Fragment {
 
 
     //Listado de productos que va a manejar el catálogo
-    private ArrayList<Producto> listaProductos = new ArrayList<>();
+    private ArrayList<Producto> listaProductos;
 
     //Vistas
     private RecyclerView rvCatalogoProductos;
@@ -57,8 +60,10 @@ public class CatalogoFragment extends Fragment {
 
     private void initRecyclerView(){
         rvCatalogoProductos.setLayoutManager(new LinearLayoutManager(getContext()));
-        //Insertamos el método para sacar la lista de la BBDD
-        // listaProductos = listarProductos();
+        listaProductos = SQLClass.consultaProductosCatalogo(getContext());
+        if (listaProductos == null){
+            listaProductos = new ArrayList<>();
+        }
         rvCatalogoProductos.setAdapter(new CatalogoAdapter(listaProductos));
     }
 
@@ -78,8 +83,4 @@ public class CatalogoFragment extends Fragment {
             }
         }
     };
-
-    /**
-     * private ArrayList<Producto> listarProductos (){}
-     */
 }

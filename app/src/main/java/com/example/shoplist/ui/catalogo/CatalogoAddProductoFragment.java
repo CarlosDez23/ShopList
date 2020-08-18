@@ -1,19 +1,12 @@
 package com.example.shoplist.ui.catalogo;
 
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +15,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
 import com.example.shoplist.R;
 import com.example.shoplist.bbdd.SQLClass;
 import com.example.shoplist.modelo.Producto;
+import com.example.shoplist.util.Herramienta;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.IOException;
@@ -84,14 +81,14 @@ public class CatalogoAddProductoFragment extends Fragment {
                         Producto producto = new Producto(tvNombreProducto.getEditText().getText().toString(),
                                 ((BitmapDrawable)ivProducto.getDrawable()).getBitmap());
                         addProducto(producto);
+                        Herramienta.mostrarAvisto("Producto añadido correctamente", getContext());
                     }else{
-                        Toast.makeText(getContext(), "Debes añadir una imagen y un nombre", Toast.LENGTH_LONG).show();
+                        Herramienta.mostrarAvisto("Debes introducir una imagen y un nombre", getContext());
                     }
                     break;
                 default:
                     break;
             }
-
         }
     };
 
@@ -149,7 +146,7 @@ public class CatalogoAddProductoFragment extends Fragment {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI);
                     this.ivProducto.setImageBitmap(bitmap);
                 } catch (IOException e) {
-                    Toast.makeText(getContext(), "Fallo en la galería", Toast.LENGTH_LONG).show();
+                    Herramienta.mostrarAvisto("Fallo en la galería", getContext());
                 }
             }
         } else if (requestCode == CAMARA) {
@@ -158,7 +155,7 @@ public class CatalogoAddProductoFragment extends Fragment {
                 thumbnail = (Bitmap) data.getExtras().get("data");
                 this.ivProducto.setImageBitmap(thumbnail);
             } catch (Exception e) {
-                Toast.makeText(getContext(), "Fallo en la cámara", Toast.LENGTH_LONG).show();
+                Herramienta.mostrarAvisto("Fallo en la cámara", getContext());
             }
         }
     }
