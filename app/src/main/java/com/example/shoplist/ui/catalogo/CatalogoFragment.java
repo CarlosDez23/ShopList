@@ -36,6 +36,10 @@ public class CatalogoFragment extends Fragment {
         return root;
     }
 
+    public CatalogoFragment getFragment(){
+        return this;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,13 +57,13 @@ public class CatalogoFragment extends Fragment {
         fabCatalogoAddProducto.setOnClickListener(listeners);
     }
 
-    private void initRecyclerView(){
+    public void initRecyclerView(){
         rvCatalogoProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         listaProductos = SQLClass.consultaProductosCatalogo(getContext());
         if (listaProductos == null){
             listaProductos = new ArrayList<>();
         }
-        rvCatalogoProductos.setAdapter(new CatalogoAdapter(listaProductos, getContext()));
+        rvCatalogoProductos.setAdapter(new CatalogoAdapter(listaProductos, getContext(), getFragment()));
     }
 
     private View.OnClickListener listeners = new View.OnClickListener() {

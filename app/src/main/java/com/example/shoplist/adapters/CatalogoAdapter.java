@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoplist.R;
 import com.example.shoplist.bbdd.SQLClass;
 import com.example.shoplist.modelo.Producto;
+import com.example.shoplist.ui.catalogo.CatalogoFragment;
 import com.example.shoplist.util.Herramienta;
 
 import java.util.ArrayList;
@@ -24,10 +25,12 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
 
     private ArrayList<Producto> listaProductos = new ArrayList<>();
     private Context context;
+    private CatalogoFragment catalogo;
 
-    public CatalogoAdapter(ArrayList<Producto> listaProductos, Context context) {
+    public CatalogoAdapter(ArrayList<Producto> listaProductos, Context context, CatalogoFragment catalogo) {
         this.listaProductos = listaProductos;
         this.context = context;
+        this.catalogo = catalogo;
     }
 
     @NonNull
@@ -69,6 +72,7 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
                     case 0:
                         SQLClass.borrarProducto(producto.getId(),context);
                         Herramienta.mostrarAvisto("Producto eliminado del catálogo",context);
+                        catalogo.initRecyclerView();
                         break;
                     case 1:
                         Herramienta.mostrarAvisto("El producto no se eliminará",context);
