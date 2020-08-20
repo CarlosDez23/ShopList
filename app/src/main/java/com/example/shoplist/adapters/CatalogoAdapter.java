@@ -1,6 +1,8 @@
 package com.example.shoplist.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +47,7 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         holder.ivBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SQLClass.borrarProducto(productoLista.getId(),context);
-                Herramienta.mostrarAvisto("Producto eliminado del catálogo",context);
+                dialogEliminar(productoLista);
             }
         });
 
@@ -57,6 +58,28 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         return listaProductos.size();
     }
 
+    private void dialogEliminar(final Producto producto){
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(context);
+        dialogo.setTitle("¿Quieres eliminar este producto?");
+        String[] opciones = {"Si", "No"};
+        dialogo.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case 0:
+                        SQLClass.borrarProducto(producto.getId(),context);
+                        Herramienta.mostrarAvisto("Producto eliminado del catálogo",context);
+                        break;
+                    case 1:
+                        Herramienta.mostrarAvisto("El producto no se eliminará",context);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        dialogo.show();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivCatalogoProductosImagen;
